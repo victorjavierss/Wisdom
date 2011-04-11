@@ -1,0 +1,48 @@
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAMUxC6Kzbun5oOCZmOLEWQxR2HbfumGTyA9ym1K19UMuu7TSNiRR9cOgJEqpszJ9tlFoSC1lnkw100w" type="text/javascript"></script>
+<script type='text/javascript'>
+	function initialize(){
+			var map = new GMap2(document.getElementById("map_canvas"));
+			
+			map.setCenter(new GLatLng(<?php echo $lat;?>, <?php echo $lng;?>), <?php echo $zoom;?>);
+			map.setUIToDefault();
+			map.addMapType(G_SATELLITE_3D_MAP);
+			//map.setMapType(G_SATELLITE_3D_MAP);
+			
+			<?php
+				$markers_images = Wisdom_Utils::factory('Map_MarkerImage');
+				echo $markers_images;
+			?>
+			
+/*
+		var point = new GLatLng(lat,lng);
+		panoramaOptions = { latlng:point };
+		pano = new GStreetviewPanorama(document.getElementById("streetview"), panoramaOptions);
+		GEvent.addListener(pano);
+
+	*/		
+			<?php foreach($markers as $marker){?>
+				<?php echo $marker;	?>
+				map.addOverlay(marker);
+			<?php }?>
+
+	}
+	
+	function createMarker(point, contenido, iconoMarca) {
+            var marker = new GMarker(point, {icon:iconoMarca});
+            GEvent.addListener(marker, 'click', function() {
+            	 marker.openInfoWindowHtml(contenido);
+			});
+            return marker;
+
+	}
+</script>
+
+<div id="map_canvas" style="width: 715px; height: 440px"></div>
+
+<script type='text/javascript'>
+
+window.addEvent('domready',function(){
+initialize()
+});
+</script>
+

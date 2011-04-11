@@ -1,0 +1,5 @@
+<div class="missing exception">
+<h3>A Component causes a failure</h3>
+<?php echo $message; ?>
+</div>
+<br />

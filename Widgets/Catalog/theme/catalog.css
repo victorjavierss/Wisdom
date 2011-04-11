@@ -1,0 +1,52 @@
+.catalog_table{
+	border-spacing: 0;
+	border:0;
+}
+.catalog_table thead tr{
+	height: 24px;
+}
+
+.catalog_table .options{
+	background: #FAFAFA url(images/bg.gif) repeat-x scroll center top;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+}
+
+.catalog_table .headers, .catalog_table tfoot{
+	background: #fafafa url(images/fhbg.gif) repeat-x bottom;
+	cursor: pointer !important;
+	cursor: hand;
+	text-align: center;
+}
+.catalog_table .headers th{
+	background: #fafafa url(images/fhbg.gif) repeat-x bottom;
+	cursor: pointer !important;
+	cursor: hand;
+	text-align: center;
+}
+
+.catalog_table .headers th .desc{
+ 
+}
+
+.catalog_table .headers th .asc, .catalog_table .headers th:hover{
+  background: green;
+}
+
+.catalog_table .odd{
+	background-color: #0404B4;
+	background: -moz-linear-gradient(top, #FFFFFF, #BDBDBD);
+	background:-webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#BDBDBD));
+}
+
+.catalog_table .even{
+	background-color: #FFF;
+	background: -moz-linear-gradient(top, #BDBDBD, #FFFFFF);
+	background:-webkit-gradient(linear, left top, left bottom, from(#BDBDBD), to(#FFFFFF));
+}
+
+.catalog_table .even:hover, .odd:hover{
+	background:-webkit-gradient(linear, left top, left bottom, from(#00FFFF), to(#81BEF7));
+	background: -moz-linear-gradient(top, #00FFFF, #81BEF7);
+	background-color: #81BEF7;
+}

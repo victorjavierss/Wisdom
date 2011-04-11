@@ -1,0 +1,76 @@
+<script type="text/javascript">
+<!--
+  //app.loadCatalogDataFrom('<?=$url?>');
+//-->
+</script>
+<div style="float: left; width: 600px; height: 220px;" id="mygrid" class="omnigrid">
+   <div class="tDiv" style="width: 598px; height: 25px;">
+      <div class="fbutton"><div><span class="add" style="padding-left: 20px;">Add</span></div></div>
+      <div class="fbutton"><div><span class="delete" style="padding-left: 20px;">Delete</span></div></div>
+      <div class="btnseparator"></div>
+      <div class="fbutton"><div><span class="duplicate" style="padding-left: 20px;">Duplicate</span></div></div>
+    </div>
+    <div class="hDiv" style="width: 598px;">
+	    <div class="hDivBox" style="width: 306px;">
+	        <?php
+	          foreach($headers as $header){
+	          	echo $helper->div($header,'','th');
+	          } 
+	        ?>
+	    </div>
+    </div>
+    <div class="cDrag" style="top: 25px;">
+    	<div style="top: 1px; left: 102px; height: 167px; display: block;"></div>
+    	<div style="top: 1px; left: 202px; height: 167px; display: block;"></div>
+    	<div style="top: 1px; left: 302px; height: 167px; display: block;"></div>
+    </div>
+    <div class="bDiv" style="width: 598px; height: 141px;">
+         <ul style="width: 303px;">
+           <li style="width: 306px;" class="erow ">
+             <div class="td" style="width: 94px;">1</div>
+             <div class="td" style="width: 94px;">siteurl</div>
+             <div class="td" style="width: 94px;">0</div>
+            </li>
+            <li class="section section-0" style="width: 306px; display: none;">
+            	<div style="padding: 5px;"> Row 0<br><br>Lorem ipsum </div>
+            </li>
+            <li style="width: 306px;" class="selected ">
+	</div>
+	<div class="pDiv" style="width: 598px; height: 25px;">
+	<div class="pDiv2">
+		<div class="pGroup">
+			<select name="rp" class="rp">
+				<option value="10" selected="selected">10</option>
+				<option value="20">20</option>
+				<option value="50">50</option>
+				<option value="100">100</option>
+				<option value="200">200</option>
+			</select>
+		</div>
+	<div class="btnseparator"></div>
+	<div class="pGroup">
+		<div class="pFirst pButton"></div>
+		<div class="pPrev pButton"></div>
+	</div>
+	<div class="btnseparator"></div>
+	<div class="pGroup">
+		<span class="pcontrol">
+			<input type="text" style="text-align: center;" size="4" value="1"> / <span>21</span>
+		</span>
+	</div>
+	<div class="btnseparator"></div>
+	<div class="pGroup">
+		<div class="pNext pButton"></div>
+		<div class="pLast pButton"></div>
+	</div>
+	<div class="btnseparator"></div>
+	<div class="pGroup">
+		<div class="pReload pButton "></div>
+	</div>
+	<div class="btnseparator"></div>
+	<div class="pGroup">
+		<span class="pPageStat">1..10 / 204</span>
+	</div>
+	</div>
+	</div>
+	</div>

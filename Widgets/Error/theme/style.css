@@ -1,0 +1,31 @@
+@CHARSET "ISO-8859-1";
+.missing{  
+  width:400px;
+  min-height:150px;
+  -moz-border-radius: 7px; 
+  -webkit-border-radius: 7px;
+  border: 1px #dddddd solid; 
+  padding-left: 80px;
+  position:relative;
+  margin: 0 auto;
+}
+
+.missing h3{
+	text-align:center;
+	text-decoration: underline
+}
+
+.controller{
+  background: url(images/controller_error.png) no-repeat;
+  background-position:20px 60px;
+}
+
+.view{
+  background: url(images/view_error.png) no-repeat;
+  background-position:20px 60px;
+}
+
+.exception{
+  background: url(images/exception_error.png) no-repeat;
+  background-position:20px 60px;
+}

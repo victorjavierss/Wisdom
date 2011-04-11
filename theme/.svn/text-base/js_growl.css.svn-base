@@ -1,0 +1,33 @@
+/*
+Part of JS_Growl Mootools based notifier
+Version 0.2
+Developed and maintained by Carlos Ouro
+http://techtrouts.com
+*/
+#JS_Growl_container{
+	position:fixed;
+	top:0;
+	left:100%;
+	width:225px;
+	margin-left:-225px;
+	height:auto;
+	border:0;
+	background:transparent;
+	padding-top:10px;
+}
+.JS_Growl_notify, .JS_Growl_notify_IE6{
+	margin-right:5px;
+	padding:15px;
+	width:190px;
+	height:50px;
+	border:0;
+	color:#fff;
+	font-size:0.9em;
+	display:none;
+}
+.JS_Growl_notify{
+	background:url(images/growl.png) no-repeat;
+}
+.JS_Growl_notify_IE6{
+	background:url(images/growl.gif) no-repeat;
+}

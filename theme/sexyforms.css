@@ -1,0 +1,614 @@
+/**
+ * Theme Name: Blue
+ * Version: 1.2
+ * Author: Eduardo D. Sada
+**/
+
+
+/*
+ - All elements [General]
+----------------------*/
+
+  .sexy-input {
+    color: #000;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+
+    line-height : 14px;
+    display     : -moz-inline-stack;
+    display     : inline-block;
+    zoom        : 1;
+    *display    : inline;
+    vertical-align:middle;
+  }
+
+  .sexy-reset{
+    float   : none;
+    padding : 0;
+    margin  : 0;
+  }
+
+  .ocultarlodelmostro {
+    border      : 0 none;
+    display     : inline;
+    height      : 0;
+    margin      : 0;
+    padding     : 0;
+    width       : 0;
+    opacity     : 0; /*CS3 Compatible Browsers*/
+    -moz-opacity: 0; /*Mozilla*/
+    filter      : alpha(opacity="0"); /*IE6 & 7*/
+    -ms-filter  : "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /*IE8*/
+  }
+
+
+/*
+ - Input Text [General]
+----------------------*/
+
+  .sexy-input .sexy-input-left,
+  .sexy-input .sexy-input-right {
+    background: transparent url(images/text.png) no-repeat;
+
+    height : 28px;
+    width  : 7px;
+    float  : left;
+  }
+
+  .sexy-input .sexy-input-left {
+    background-position: left top;
+  }
+
+  .sexy-input .sexy-input-right {
+    background-position: right -66px;
+  }
+
+  .sexy-input .sexy-input-center {
+    background: transparent url(images/text.png) repeat-x scroll 0 -33px;
+
+    height      : 18px;
+    float       : left; 
+    line-height : 14px;
+    margin      : 0;
+    padding     : 5px 0;
+  }
+
+  .sexy-input .sexy-input-center input{
+    color: #000;
+
+    height      : 16px;
+    background  : transparent;
+    border      : none;
+    font-style  : normal;
+    font-family : inherit;
+    font-stretch: ultra-condensed;
+    margin      : 0;
+    outline     : none;
+  }
+
+/*
+ - Input Text [Focus]
+----------------------*/
+
+  .sexy-input-focus .sexy-input-left {
+    background-position: left -99px;
+  }
+
+  .sexy-input-focus .sexy-input-center {
+    background-position: right -132px;
+  }
+
+  .sexy-input-focus .sexy-input-right {
+    background-position: right -165px;
+  }
+
+  .sexy-input-focus .sexy-input-center input{
+    color: #000;
+  }
+
+/*
+ - Input Text [Disabled]
+----------------------*/
+
+  .sexy-input-disabled .sexy-input-left {
+    background-position: left -197px;
+  }
+
+  .sexy-input-disabled .sexy-input-center {
+    background-position: right -230px;
+  }
+
+  .sexy-input-disabled .sexy-input-right {
+    background-position: right -263px;
+  }
+
+  .sexy-input-disabled .sexy-input-center input{
+    color: #d1d3d6;
+  }
+
+
+
+/*
+ - Radio Buttons [General]
+----------------------*/
+
+  .sexy-input .sexy-input-radio {
+    background  : url(images/radiochecks.png) no-repeat center -118px;
+    width       : 18px;
+    height      : 18px;
+
+    display     : block;
+    float       : left;
+  }
+
+  .sexy-input .sexy-radio-checked {
+    background-position: center -94px;
+  }
+
+/*
+ - Radio Buttons [Focus]
+----------------------*/
+
+  .sexy-input-focus .sexy-input-radio {
+    background-position: center -95px;
+    border  : 1px dotted #AAA;
+    width   : 16px;
+    height  : 16px;
+  }
+
+/*
+ - Radio Buttons [Disabled]
+----------------------*/
+
+  .sexy-input-disabled .sexy-input-radio {
+    background-position: center -166px;
+  }
+
+  .sexy-input-disabled .sexy-radio-checked {
+    background-position: center -143px;
+  }
+
+
+
+/*
+ - Checkbox [General]
+----------------------*/
+
+  .sexy-input .sexy-input-check {
+    background  : url(images/radiochecks.png) no-repeat center -24px;
+
+    width       : 19px;
+    height      : 19px;
+    display     : block;
+    float       : left;
+  }
+
+  .sexy-input .sexy-checkbox-checked {
+    background-position:center -1px;
+  }
+
+/*
+ - Checkbox [Focus]
+----------------------*/
+
+  .sexy-input-focus .sexy-input-check {
+    background-position: center -25px;
+    border  : 1px dotted #AAA;
+    width   : 17px;
+    height  : 17px;
+  }
+
+  .sexy-input-focus .sexy-checkbox-checked {
+    background-position: center -2px;
+  }
+
+/*
+ - Checkbox [Disabled]
+----------------------*/
+
+  .sexy-input-disabled .sexy-input-check {
+    background-position:center -70px;
+  }
+
+  .sexy-input-disabled .sexy-checkbox-checked {
+    background-position:center -47px;
+  }
+
+
+
+/*
+ - Textarea [General]
+----------------------*/
+
+  .sexy-input .sexy-area-top {
+    background  : url(images/textarea.png) no-repeat left top;
+
+    position    : relative;
+    margin      : 0 4px 4px 0;
+    float       : left;
+  }
+
+  .sexy-input .sexy-area-top2 {
+    background  : url(images/textarea.png) no-repeat -492px top;
+
+    position    : absolute;
+    right       : -5px;
+    height      : 4px;
+    width       : 5px;
+  }
+
+  .sexy-input .sexy-area-center {
+    padding: 10px 0 0 10px;
+  }
+
+  .sexy-input .sexy-area-center textarea {
+    background      : transparent none repeat scroll 0 0;
+    vertical-align  : middle;
+    border          : none;
+    outline         : none;
+    resize          : none;
+  }
+
+  .sexy-input .sexy-area-center2 {
+    background  : url(images/textarea.png) no-repeat -492px -4px;
+
+    position    : absolute;
+    right       : -5px;
+    top         : 4px;
+    width       : 5px;
+  }
+
+  .sexy-input .sexy-area-bottom {
+    background  : url(images/textarea.png) no-repeat left -488px;
+
+    position    : relative;
+    height      : 4px;
+    bottom      : -4px;
+    left        : -10px;
+  }
+
+  .sexy-input .sexy-area-bottom2 {
+    background  : url(images/textarea.png) no-repeat -482px -488px;
+
+    line-height : 4px;
+    overflow    : hidden;
+    position    : absolute;
+    bottom      : 0px;
+    right       : -15px;
+    width       : 15px;
+    height      : 4px;
+  }
+
+/*
+ - Textarea [Focus]
+----------------------*/
+  .sexy-area-focus .sexy-area-top {
+    background-position: -513px top;
+  }
+
+  .sexy-area-focus .sexy-area-top2 {
+    background-position: -1005px top;
+  }
+
+  .sexy-area-focus .sexy-area-center2 {
+    background-position: -1005px -4px;
+  }
+
+  .sexy-area-focus .sexy-area-bottom {
+    background-position: -513px -488px;
+  }
+
+  .sexy-area-focus .sexy-area-bottom2 {
+    background-position: -995px -488px;
+  }
+
+/*
+ - Textarea [Disabled]
+----------------------*/
+  .sexy-area-disabled .sexy-area-top {
+    background-position: -1026px top;
+  }
+
+  .sexy-area-disabled .sexy-area-top2 {
+    background-position: -1518px top;
+  }
+
+  .sexy-area-disabled .sexy-area-center2 {
+    background-position: -1518px -4px;
+  }
+
+  .sexy-area-disabled .sexy-area-bottom {
+    background-position: -1026px -488px;
+  }
+
+  .sexy-area-disabled .sexy-area-bottom2 {
+    background-position: -1508px -488px;
+  }
+
+
+/*
+ - SelectBox [General]
+----------------------*/
+
+  .sexy-select {
+    position: relative;
+
+    display : -moz-inline-stack;
+    display : inline-block;
+    zoom    : 1;
+    *display: inline;
+    vertical-align:middle;
+  }
+
+  .sexy-select .sexy-select-left,
+  .sexy-select .sexy-select-right {
+    background: transparent url(images/select.png) no-repeat;
+    float     : left;
+    height    : 27px;
+    display   : block;
+  }
+
+  .sexy-select .sexy-select-left {
+    background-position: left top;
+    width: 7px;
+  }
+
+  .sexy-select a.sexy-select-right,
+  .sexy-select a.sexy-select-right:hover {
+    background-position : right -66px;
+
+    margin  : 0;
+    padding : 0;
+    width   : 21px;
+  }
+
+  .sexy-select .sexy-select-center {
+    background  : transparent url(images/select.png) repeat-x scroll 0 -33px;
+    
+    cursor      : pointer;
+    line-height : 17px;
+    float       : left;
+    height      : 17px;
+    margin      : 0;
+    padding     : 5px 0;
+    overflow    : hidden;
+  }
+
+  .sexy-select .sexy-select-center a,
+  .sexy-select .sexy-select-center span{
+    color       : #000;
+    font-family : Verdana,Arial,Helvetica,sans-serif;
+    font-size   : 12px;
+    font-weight : normal;
+    font-style  : normal;
+    text-decoration: none;
+
+    background  : transparent none repeat scroll 0 0;
+    border      : none;
+    outline     : none;
+    margin      : 0;
+    padding     : 0;
+  }
+
+/*
+ - SelectBox [Focus]
+----------------------*/
+
+  .sexy-select-focus .sexy-select-left{
+    background-position: left -99px;
+  }
+
+  .sexy-select-focus a.sexy-select-right,
+  .sexy-select-focus a.sexy-select-right:hover {
+    background-position: right -165px;
+  }
+
+  .sexy-select-focus .sexy-select-center {
+    background-position: left -132px;
+  }
+
+/*
+ - SelectBox [Disabled]
+----------------------*/
+
+  .sexy-select-disabled .sexy-select-left{
+    background-position: left -198px;
+  }
+
+  .sexy-select-disabled a.sexy-select-right,
+  .sexy-select-disabled a.sexy-select-right:hover {
+    background-position: right -264px;
+  }
+
+  .sexy-select-disabled .sexy-select-center {
+    background-position: left -231px;
+  }
+
+  .sexy-select-disabled .sexy-select-center span{
+    color: #d1d3d6;
+  }
+
+/*
+ - Select List [General]
+----------------------*/
+
+  .sexy-select-list {
+    background-color: #f5f9fa;
+    border-left     : 1px solid #bababa;
+    border-right    : 1px solid #bababa;
+
+    z-index   : 100;
+    display   : none;
+    height    : 150px;
+    margin    : 0 0 0 1px;
+    padding   : 0 0 5px;
+    position  : absolute;
+    line-height: 16px;
+  }
+
+  .sexy-select-list ul {
+    margin          : 0;
+    padding         : 3px 0;
+    height          : 100% !important; /* IE Hack */
+    height          : auto;
+    overflow        : auto;
+    list-style-image    : none;
+    list-style-position : outside;
+    list-style-type     : none;
+  }
+
+  .sexy-select-list ul li {
+    margin : 0;
+    padding: 3px 0 0;
+  }
+
+  .sexy-select-list ul li a {
+    color           : #000;
+    font-family     : Verdana,Arial,Helvetica,sans-serif;
+    font-size       : 11px;
+
+    height          : 16px;
+    background      : transparent none repeat scroll 0 0;
+    border          : none;
+    font-weight     : normal;
+    font-style      : normal;
+    text-decoration : none;
+    padding         : 2px 6px;
+    margin          : 0;
+    display: block;
+    outline: none;
+  }
+
+
+  .sexy-select-list ul li a.hover {
+    background  : transparent url(images/select.png) repeat-x scroll left -299px;
+    color       : #ffffff;
+
+    padding     : 2px 6px;
+  }
+
+  .sexy-select-last-r {
+    background: transparent url(images/select.png) no-repeat scroll right -373px;
+
+    margin    : 0;
+    padding   : 0;
+    height    : 10px;
+    width     : 228px;
+    position  : absolute;
+    left      : -3px;
+    bottom    : -10px;
+    z-index   : 100;
+  }
+
+  .sexy-select-last-l {
+    background: transparent url(images/select.png) no-repeat scroll left -331px;
+    
+    height  : 10px;
+    margin  : 0;
+    padding : 0;
+  }
+
+  .sexy-select-last-c {
+    background: transparent url(images/select.png) repeat-x scroll left -352px;
+    height: 10px;
+    margin: 0 6px;
+  }
+
+
+/*
+ - Buttons [General]
+----------------------*/
+
+  .sexy-button {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    vertical-align:middle;
+
+    border:none;
+    margin:0;
+    padding:0px;
+  }
+
+  .sexy-button .sexy-button-left {
+    background: url(images/button.png) no-repeat left top;
+    padding   : 0 0 0 13px;
+
+    border    : none;
+    margin    : 0;
+  }
+
+  .sexy-button .sexy-button-right {
+    background:url(images/button.png) no-repeat right top;
+    padding:4px 13px 4px 0;
+
+    border:none;
+    margin:0;
+  }
+
+  .sexy-button input.sexy-button-input {
+    font-family : Verdana,Arial,Helvetica,sans-serif;
+    font-weight : bold;
+    font-size   : 12px;
+    color       : #ffffff;
+
+    background  : transparent;
+    border      : none;
+    display     : block;
+    margin      : 0;
+    padding     : 0;
+    height      : 20px;
+    cursor      : pointer;
+    outline     : none;
+    overflow    : visible;
+  }
+
+  td .sexy-button input.sexy-button-input[class] {
+    width: auto; /* Modern Browsers */
+  }
+  .sexy-button .sexy-button-input:focus,
+  .sexy-button .sexy-button-input::-moz-focus-inner {
+    outline:none;
+    border:none;
+  }
+
+
+/*
+ - Buttons [Focus]
+----------------------*/
+
+  .sexy-button-focus .sexy-button-left {
+    background: url(images/button.png) no-repeat left -30px;
+  }
+
+  .sexy-button-focus .sexy-button-right {
+    background: url(images/button.png) no-repeat right -30px;
+  }
+
+/*
+ - Buttons [Pressed]
+----------------------*/
+
+  .sexy-button-press .sexy-button-left {
+    background: url(images/button.png) no-repeat left -60px;
+  }
+
+  .sexy-button-press .sexy-button-right {
+    background: url(images/button.png) no-repeat right -60px;
+  }
+
+
+/*
+ - Buttons [Disabled]
+----------------------*/
+  .sexy-button-disabled .sexy-button-left {
+    background: url(images/button.png) no-repeat left -90px;
+  }
+
+  .sexy-button-disabled .sexy-button-right {
+    background: url(images/button.png) no-repeat right -90px;
+  }
+
+  .sexy-button-disabled .sexy-button-input {
+    color: #d1d3d6;
+  }
