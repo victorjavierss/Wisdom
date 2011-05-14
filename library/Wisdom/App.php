@@ -55,7 +55,7 @@ class Wisdom_App {
 			throw new Exception("Javascript is misconfigured");
 		}
 
-		if(!is_dir(MODULES_PATH . "/" . DEFAULT_MODULE)){
+		if(!class_exists(DEFAULT_MODULE.'_Controller')){
 			$home_page = MODULES_PATH . "/" . DEFAULT_MODULE;
 			throw new Exception("{$home_page}: Controller for home page is not found");
 		}
