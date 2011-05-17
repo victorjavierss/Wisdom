@@ -9,7 +9,10 @@ $('login').addEvent('submit', function(e) {
 			
 			this.set('send', { 
 				 onComplete: function(response) {
-				                $('ajax_loading').setStyle('display','none');
+					if(typeof response == 'undefined'){
+						response = '<div id="error_notification">Error al tratar de iniciar sesi&oacute;n</div>';
+					}
+				        $('ajax_loading').setStyle('display','none');
 		                        if(response.trim() == 'OK'){
                                      window.location.reload();
 		                        }else{ 
