@@ -43,7 +43,6 @@ $wisdom_common . PATH_SEPARATOR .
 WISDOM_WIDGETS . PATH_SEPARATOR .
 $services_path;
 
-
 set_include_path( $include_path . PATH_SEPARATOR . get_include_path());
 
 

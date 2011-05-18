@@ -1,5 +1,5 @@
 <?php
-class Wisdom_DB_Admin {
+class Wisdom_Db_Admin {
   
     private static $_conexiones_base_datos = NULL;
     
@@ -8,7 +8,7 @@ class Wisdom_DB_Admin {
     
 	/**
 	 * @param string $conexion Nombre de la conexión en .ini
-	 * @return Wisdom_DB
+	 * @return Wisdom_Db
 	 */
   public static function getConexion($conexion = self::CONEXION_DEFAULT ){
   	

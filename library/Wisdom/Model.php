@@ -14,7 +14,7 @@ class Wisdom_Model {
 			throw new Exception('No table especified for model: ' . get_called_class() );
 		}
 
-		$conexion = Wisdom_DB_Admin::getConexion($this->getConexion());
+		$conexion = Wisdom_Db_Admin::getConexion($this->getConexion());
 		
 		$class = $conexion->getTableClass();
 		
