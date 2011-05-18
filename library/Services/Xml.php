@@ -16,6 +16,6 @@ class Services_Xml{
 	}
 
 	public function __get($tag){
-		return $this->_xml->$tag->__toString();
+		return (string)$this->_xml->$tag;
 	}
 }

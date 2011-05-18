@@ -4,9 +4,6 @@ $('login').addEvent('submit', function(e) {
 			$('ajax_loading').setStyle('display','block');
 			$('login_form').setStyle('display','none');
 			$('submit').setStyle('display','none');
-			
-			$(pass_field).value=SHA1($(pass_field).value);
-			
 			this.set('send', { 
 				 onComplete: function(response) {
 					if(typeof response == 'undefined'){

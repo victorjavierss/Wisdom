@@ -10,6 +10,7 @@ class Wisdom_Widget {
 	function __construct() {}
 	
 	public function __call($widget, $args){
+	  $widget = ucfirst($widget);
 	  $widget_obj =  Wisdom_Utils::factory($widget.'_Controller');
       if( $widget_obj instanceOf Wisdom_Widget_Interface AND $widget_obj instanceOf Wisdom_Controller ){
       	

@@ -76,15 +76,12 @@ class Wisdom_App {
 	 
 	public static function widget($widget,$action="display",$params=array()){
 		$user = Wisdom_Utils::accesor()->get('Wisdom_User');
-  
 		$load = CHECKUSER ? $user->auth  : true;
-		
 		if($load){
 			self::$_self->loadController($widget,$action,$params);
 		}elseif ($widget=="login" || $widget=="error"){
 			self::$_self->loadController($widget,$action,$params);
 		}
-		
 	}
 
 	

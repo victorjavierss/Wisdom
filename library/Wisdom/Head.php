@@ -28,8 +28,12 @@ class Wisdom_Head{
 	        }
 	        !$author && $html_head .= "<meta name='author' value='Wisdom Toolkit'/>";
 	        $request = Wisdom_Utils::factory('Wisdom_Request');
-	        $controller = ucfirst($request->controller);
-	        $html_head .= "<title>.:: " . APP_NAME . " - {$controller} ::.</title>";
+	        $controller = strtolower($request->controller);
+	        $action     = ($display=strtolower($request->action)=='display') ? '' : ucfirst($request->action);
+	        
+	        $controller = $display ? ucfirst($request->controller) :strtolower($request->controller);
+	        
+	        $html_head .= "<title>.:: " . APP_NAME . " - {$action} {$controller} ::.</title>";
         }
         return $html_head;
     }

@@ -1,5 +1,5 @@
 <?php
-class Helpers_Img{
+class Helpers_Img extends Wisdom_Helper{
     public function img($img, $alt = '', $attribs = array(), $ext = FALSE){
     	
     	static $cache = array();

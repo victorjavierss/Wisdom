@@ -128,7 +128,6 @@ class Wisdom_DB {
 	}
 
 	/**
-	 * Enter description here ...
 	 * @param $mode
 	 * @deprecated
 	 */

@@ -7,15 +7,14 @@ class Services_Translator  {
 
 	public function __construct(){
 		$req = Wisdom_Utils::factory("Wisdom_Request");
-		$this->_lang = $req->lang;
 		$config = Wisdom_Config::get("app");
-		$this->_default_lang = isset($config['lang']) ? $config['lang'] : 'es'; 
+		$this->_default_lang = isset($config['lang']) ? $config['lang'] : 'es';
+		$this->_lang = $req->lang ? $req->lang : $this->_default_lang; 
 	}
 
 	public function translate($message_code){
-		
 		static $_cache;
-		
+		$message_code = strtolower($message_code);
 		if ( ! isset($_cache[$message_code]) ){
 			$lang_file = CONFIG_PATH . "/lang/{$this->_lang}.xml" ;
 			$lang_path = dirname($lang_file);

@@ -14,28 +14,24 @@ class Login_Controller extends Wisdom_Controller{
 		
 		$this->_hidden_fields = array_keys($fields);
 		
-		$auth_config  = Wisdom_Config::get("auth");
+		$username_field = $auth_config["credentials.user"];
+        
 		
 		$this->setViewVar('pass_field', $password_field);
+		$this->setViewVar('user_field', $username_field);
 	}
 	
     public function dologin( $user = NULL, $password = NULL){
-    	
     	$auth_config  = Wisdom_Config::get("auth");
-        
+        $digest = $auth_config['credentials.digest'];
         $username_field = $auth_config["credentials.user"];
         $password_field = $auth_config["credentials.password"];
-    	
 		$request = $this->getRequest();
-		$usr = $user ? $user : $request->$username_field  ; 
-		$psw = $password ? $password : $request->$password_field;
-        
+		$usr = $user ? $user : $request->$username_field; 
+		$psw = $digest($password ? $password : $request->$password_field);
 		$select =  $this->_Model->getSelect();
-		
-		$select->where("{$username_field}= ?",$usr)->where("{$password_field}= ?",$psw);	
-
+		$select->where("{$username_field}= ?",$usr)->where("{$password_field}= ?",$psw);
 		$data = $this->_Model->fetchRow($select, PDO::FETCH_ASSOC);
-		
 	 	if($data === FALSE){
 	 	    $loged = FALSE;
 	 	}else{

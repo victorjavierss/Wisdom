@@ -52,7 +52,7 @@ class Wisdom_Request extends Wisdom_Singleton{
        
        	if( ! isset($this->_data['lang']) ){
        		$config = Wisdom_Config::get('app');
-			$this->_data['lang'] = isset($config['lang']) ? $config['lang'] : 'en'; ;
+			$this->_data['lang'] = isset($config['lang']) ? $config['lang'] : 'en';
        	}
        	
        

@@ -10,16 +10,16 @@ var pass_field = '<?=$pass_field;?>';
 		</center>
 		<div id="login_response"><!-- spanner --></div>
 		<div id='login_form'>
-			<form action="<?=URL?>login/dologin" method="POST" id="login">
+			<form action="<?php echo $helper->url('login/dologin')?>" method="POST" id="login">
           		<table>
           			<tbody>
           				<tr>
           					<td><label for="login">Nombre de Usuario</label></td>
-          					<td><input type="text" name="login" id="login"></td>
+          					<td><input type="text" name="<?php echo $user_field?>" id="<?php echo $user_field?>"></td>
           				</tr>
           				<tr>
           					<td><label for="psw">Password</label></td>
-          					<td><input type="password" name="psw" id="psw"></td>
+          					<td><input type="password" name="<?php echo $pass_field?>" id="<?php echo $pass_field?>"></td>
           				</tr>
           				<tr>
           					<td align="center" colspan="2"><input type="submit" value="Ingresar" name="submit" id="submit" class='button' ></td>
@@ -28,7 +28,6 @@ var pass_field = '<?=$pass_field;?>';
           		</table>
           	</form>
 		</div>
-		
 		<div id="ajax_loading">
 			<center><?=$helper->img('loading','cargando'); ?></center>
 		</div>

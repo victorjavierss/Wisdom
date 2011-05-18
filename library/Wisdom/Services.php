@@ -4,7 +4,7 @@ class Wisdom_Services extends Wisdom_Singleton{
 	private function factory($service, $args){
 		$paths[] = APP_HOME  . DIRECTORY_SEPARATOR . 'services'  . DIRECTORY_SEPARATOR;
 		$paths[] = WISDOM_LIB  . 'Services'  . DIRECTORY_SEPARATOR;
-	   	$classname = str_replace('_', '/',$service);
+	   	$classname = ucfirst(str_replace('_', '/',$service));
 	        $include    = FALSE;
         	foreach($paths as $path){
         		if( is_file($path.$classname.".php") ){

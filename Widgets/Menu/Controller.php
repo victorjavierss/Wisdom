@@ -3,7 +3,6 @@ class Menu_Controller extends Wisdom_Controller {
 
 	public function display($current = NULL){
 		$menu  = Wisdom_Config::get("menu");
-		
 		if( isset($menu['options']) ){
 			$options = $menu['options'];
 			$options = explode(',',$options);
