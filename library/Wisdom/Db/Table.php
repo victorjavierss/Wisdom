@@ -165,4 +165,9 @@ class Wisdom_Db_Table  {
 	public function rowCount(){
 		return $this->_db->rowCount();
 	}
+	
+	public function select(){
+		return Wisdom_Utils::factory()->get("Wisdom_Db_Select",array( $this->_table ))->select();
+	}
+	
 }

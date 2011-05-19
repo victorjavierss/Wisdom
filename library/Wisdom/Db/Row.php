@@ -7,14 +7,15 @@ class Wisdom_Db_Row  {
 	protected $_data  = NULL;
 
 	
-	public function __construct($table, $data){
-		
+	public function __construct($table, $data = array()){
 		if( is_string($table) ){
-			$this->_table = Utils::factory($table);
-		}elseif ($table instanceof Db_Table){
+			$table = Utils::factory($table);
+		}
+		
+		if ($table instanceof Wisdom_Db_Table){
 			$this->_table = $table;
 		}else{
-			throw new Exception("'{$table}' is not a instance of Db_Table");
+			throw new Exception("'". get_class($table)."' is not a instance of Db_Table");
 		}
 
 		if( is_array($data) ){
@@ -22,12 +23,21 @@ class Wisdom_Db_Row  {
 		}else{
 			
 		}
-
 	}
 	
 	//	delete
 	//	update
+	//  save
 
+	public function save(){
+		if( ! $this->_id ){
+			$result = $this->_table->insert($this->_data);
+		}else{
+			
+		}
+		return $result;
+	}	
+	
 	 
 	/**
 	 * Updates a record from a table
@@ -36,7 +46,7 @@ class Wisdom_Db_Row  {
 	 * @param unknown_type $condition The condition for performs the updating, if none especified all records are updated
 	 * @return unknown_type
 	 */
-	public function update(array $data,$condition=""){
+	public function update(array $data, $condition=""){
 		$update = array();
 		foreach($data as $campo=>$valor){
 			$update[] = "{$campo}='".htmlentities($valor)."',";
@@ -50,6 +60,14 @@ class Wisdom_Db_Row  {
 
 	public function toArray(){
 		return $this->_data;
+	}
+
+	public function setData($data){
+		$this->_data = $data;
+	}
+
+	public function __get($var){
+		return isset($this->_data[$var]) ? $this->_data[$var] : FALSE;
 	}
 }
 

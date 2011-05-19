@@ -43,7 +43,7 @@ class Wisdom_Model {
 	 * @param unknown_type $data data to validate
 	 * @return unknown_type True if the data is valid, false otherwise
 	 */
-	private function isValid($data){
+	protected function isValid($data){
 		$valid = TRUE;
 	  
 		return $valid;
@@ -73,11 +73,10 @@ class Wisdom_Model {
 		}
 		return $this->_db_table->fetchAll($select);
 	}
-	
+
 	public function getConexion(){
 		return $this->_conexion;
 	}
-
 
 
 	public function getPrimary(){
@@ -87,7 +86,7 @@ class Wisdom_Model {
 	public function getSelect(){
 		return Wisdom_Utils::factory()->get("Wisdom_Db_Select",array( $this->_table ))->select();
 	}
-	
+
 
 	public function __call($function, $args){
 		if( is_callable(array($this->_db_table, $function)) ){
