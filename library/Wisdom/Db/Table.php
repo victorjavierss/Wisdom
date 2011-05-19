@@ -44,7 +44,7 @@ class Wisdom_Db_Table  {
 
 	public function __construct($conexion = Wisdom_Db_Admin::CONEXION_DEFAULT){
 		$conexion  = ($conexion instanceof Wisdom_Db_Interface) ? $conexion 
-															: Wisdom_DB_Admin::getConexion($conexion);
+															: Wisdom_Db_Admin::getConexion($conexion);
 		$this->setConexion($conexion);
 	}
 
@@ -148,7 +148,7 @@ class Wisdom_Db_Table  {
 
 		$sql = "INSERT INTO ".$table." (".$fields.") VALUES (".$values.")";
 
-		$this->_db->query($sql);
+		return $this->_db->query($sql);
 	}
 
 	public function getFields(){
@@ -166,6 +166,3 @@ class Wisdom_Db_Table  {
 		return $this->_db->rowCount();
 	}
 }
-
-
-?>

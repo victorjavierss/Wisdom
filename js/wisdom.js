@@ -1,5 +1,5 @@
 var Wisdom = new Class({
-	alert: function(message){
+    alert: function(message){
        alert(message);
     },
     loadContentPanes: function(){
@@ -13,20 +13,16 @@ var Wisdom = new Class({
     		req.send();
     	});
     },
-    loadCatalogDataFrom: function(data_url){
-    	var data_req = new Request.JSON({
-    		url: data_url
-    	});
-    	data_req.send();
+    error: function(message){
+    	//TODO mostrar un mensaje FANCY
+    	alert(message);
     }
 });
 
 var app;
 var catalog;
-var Sexy;
 
 window.addEvent('domready',function(ev){
 	app = new Wisdom();
 	app.loadContentPanes();
-	Sexy = new SexyAlertBox();
 });

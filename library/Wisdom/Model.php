@@ -7,6 +7,8 @@ class Wisdom_Model {
 	protected $_primary_key = NULL;
 	protected $_conexion    = Wisdom_Db_Admin::CONEXION_DEFAULT;
 	protected $_ref_cols    = array();
+
+	protected $_errors      = array();
 	
 	public function __construct(){
 
@@ -27,6 +29,10 @@ class Wisdom_Model {
 		$this->init();
 	}
 
+	public function getErrors(){
+		return $this->_errors;
+	}
+	
 	/**
 	 * Custom action for initialize de model
 	 */
@@ -50,10 +56,11 @@ class Wisdom_Model {
 	 */
 	public function save($data){
 		if($this->isValid($data)){
-			$this->_db_table->insert($data);
+			$result = $this->_db_table->insert($data);
 		}else{
-			throw new Exception('Given Data is not valid');
+			$result = FALSE;
 		}
+		return $result;
 	}
 
 	public function getTable(){

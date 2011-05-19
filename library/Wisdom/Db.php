@@ -106,7 +106,12 @@ class Wisdom_DB {
 		}else{
 			$this->_rs = $this->_pdo->exec($sql);
 		}
-
+		
+		if ( ! $this->_rs ){
+			$error = $this->_pdo->errorInfo();
+			throw new Exception($error[2], $error[1]);
+		}
+		
 		return $this->_rs;
 	}
 
