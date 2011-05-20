@@ -1,5 +1,0 @@
-<?php if(! $success) {?>
-<div id="error_notification">Usuario y/o Password inv&aacute;lidos</div>
-<?php }else{?>
-OK
-<?php }?>
