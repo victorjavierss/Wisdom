@@ -32,8 +32,10 @@ class Wisdom_Db_Row  {
 	public function save(){
 		if( ! $this->_id ){
 			$result = $this->_table->insert($this->_data);
+			$this->_data['id'] = $this->_id = $this->_table->lastId();
 		}else{
-			
+			$primary = $this->_table->getPrimary();
+			$this->update($this->_data, "WHERE {$primary} ='{$this->_id}'");
 		}
 		return $result;
 	}	

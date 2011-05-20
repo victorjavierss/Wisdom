@@ -121,7 +121,6 @@ class Wisdom_App {
 				default: $error = "exception";
 				break;
 			}
-
 			if($controller=="error"){
 				echo "<pre>{$ex}</pre>";
 			} else {
@@ -129,11 +128,12 @@ class Wisdom_App {
 			}
 		}
 	}
-	 
-	public static function redirect($location,$baseURL=URL){
-		header("Location: {$baseURL}{$location}");
-	}
 
+	public static function redirect($location, $baseURL=URL){
+		$helper_handler = new Wisdom_Helper();
+		$location = $helper_handler->url($location);
+		header("Location: {$location}");
+	}
 }
 
 ?>

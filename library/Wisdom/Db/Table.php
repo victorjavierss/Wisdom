@@ -170,4 +170,11 @@ class Wisdom_Db_Table  {
 		return Wisdom_Utils::factory()->get("Wisdom_Db_Select",array( $this->_table ))->select();
 	}
 	
+	public function __toString(){
+		return $this->_name;
+	}
+	
+	public function lastId(){
+		return $this->_db->lastInsertId();
+	}
 }
