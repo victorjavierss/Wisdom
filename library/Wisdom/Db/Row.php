@@ -25,6 +25,13 @@ class Wisdom_Db_Row  {
 		}
 	}
 	
+	public function load($id){
+		$data = $this->_table->find($id);
+		$data = Wisdom_Utils::objectToArray($data);
+		$this->setData($data);
+	}
+	
+	
 	//	delete
 	//	update
 	//  save

@@ -158,6 +158,18 @@ public static function jsCompress($files){
     	}
     	
     }
+    
+	public static function objectToArray($d) {
+		if (is_object($d)) {
+			$d = get_object_vars($d);
+		}
+ 
+		if (is_array($d)) {
+			return array_map(array(__CLASS__,'objectToArray'), $d);
+		}else {
+			return $d;
+		}
+	}
 }
 
 
