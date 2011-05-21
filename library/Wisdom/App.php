@@ -130,7 +130,7 @@ class Wisdom_App {
 	}
 
 	public static function redirect($location, $baseURL=URL){
-		$helper_handler = Wisdom_Helper::i();
+		$helper_handler = Wisdom_Utils::factory()->get('Wisdom_Helper');
 		$location = $helper_handler->url($location);
 		header("Location: {$location}");
 	}
