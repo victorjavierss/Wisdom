@@ -31,7 +31,7 @@ class Wisdom_Magic{
 
 			$this->_Controller->initModel();
 		}else{
-			throw new Exception("Denied",2);
+			//throw new Exception("Denied",2);
 		}
 	}
 
@@ -55,7 +55,7 @@ class Wisdom_Magic{
 					}
 					$this->_Controller->dispatch($action,$params);
 				} else {
-					throw new Exception("Action Denied",2);
+				//	throw new Exception("Action Denied",2);
 				}
 			} else {
 				throw new Exception("Action {$action} is not callable for controller {$controller_class}",1);

@@ -167,7 +167,7 @@ class Wisdom_Db_Table  {
 	}
 	
 	public function select(){
-		return Wisdom_Utils::factory()->get("Wisdom_Db_Select",array( $this->_table ))->select();
+		return Wisdom_Utils::factory()->get("Wisdom_Db_Select",array( $this->_name ))->select();
 	}
 	
 	public function __toString(){

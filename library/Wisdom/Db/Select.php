@@ -63,21 +63,22 @@ class Wisdom_Db_Select  {
        
        private function _buildSQL(){
                $fields = $this->_fields ? $this->_fields : '*';
-               $sql = "SELECT {$fields} FROM {$this->_table}";
+               $sql = "SELECT {$fields} FROM {$this->_table} ";
                
+               is_array($this->_joins) && $sql.=implode(" ", $this->_joins);
+
                if ( is_array($this->_where) && !empty($this->_where) ){
                        $where = implode(" AND ",$this->_where);
                        $sql .= " WHERE {$where}";
                }else{
                        #No where
                }
-
                if(is_array($this->_group_by) && !empty($this->_group_by)){
                        $sql .= " GROUP BY " . implode(',',$this->_group_by);
                }
-               
+
 			   $sql .= $this->_limit;
-			   
+
                return $sql;
        }
        

@@ -34,7 +34,7 @@ class Wisdom_Request extends Wisdom_Singleton{
           
        	$get                       = isset($_GET["q"]) ? $_GET["q"] : DEFAULT_MODULE; 
        	$get                       = explode("/",$get);
-
+       	
        	if( Wisdom_Acl::hasControllerPermission($get[0])){
        		$this->_data["controller"] = $get[0]; 
        	} else {
@@ -42,7 +42,7 @@ class Wisdom_Request extends Wisdom_Singleton{
        	}
 
 		$this->_data["action"]     = (isset($get[1]) && $get[1] )? $get[1] : "display";
-
+		
 		if( ! Wisdom_Acl::hasActionPermission($this->_data["controller"],$this->_data["action"]) ){
 			$this->_data["controller"] = 'login';
 			$this->_data["action"] 	   = 'display'; 

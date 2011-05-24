@@ -9,7 +9,14 @@ class Wisdom_User{
 			$_SESSION["profile"]['fullname'] = $translator->guest;
 		}
 		
-        $ret = isset($_SESSION["profile"][$att]) ? $_SESSION["profile"][$att] : null;
+		if( is_object($_SESSION["profile"]) ){
+			$_SESSION["profile"] = Wisdom_Utils::objectToArray($_SESSION["profile"]);
+		}else{
+				
+		}
+		
+		$ret = isset($_SESSION["profile"][$att]) ? $_SESSION["profile"][$att] : null;
+        
         if($att=='auth'){
         	$id  = $config->auth["primary"];
         	$ret = isset($_SESSION["profile"][$id]) ? TRUE : FALSE;

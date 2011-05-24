@@ -1,7 +1,7 @@
 <?php
 class Error_Controller extends Wisdom_Controller{
     
-	public function denied(){}
+	public function denied(){$this->noRender();}
     
     public function view(){}
     
@@ -18,11 +18,10 @@ class Error_Controller extends Wisdom_Controller{
     	$debug = $ex ? $ex->getTraceAsString() : "";
     	
         $message="<strong>{$message}</strong>";
+
+        DEBUG && $message .= "<pre>{$debug}</pre>";
         
-        if(DEBUG){
-        	$message .= "<pre>{$debug}</pre>";
-        }
-        
+
         $this->setViewVar('message',$message);
     }
 }

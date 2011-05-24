@@ -40,14 +40,14 @@ class Wisdom_Acl{
 		}else{
 			if( isset($ACL) ){
 				$usr = Wisdom_Utils::accesor()->get('Wisdom_User');
-
 				$rol = is_null($usr->role) ? "guest" : $usr->role;
-				
 				self::$_cache[$controller][$action] = FALSE;
 				if( isset( $ACL[$rol] ) ){
-					if(array_key_exists($controller,$ACL[$rol]) ){
-					 if(array_search("*",$ACL[$rol][$controller]) !== FALSE || array_search($action,$ACL[$rol][$controller]) !== FALSE)
-					 self::$_cache[$controller][$action] = TRUE;
+					if(isset($ACL[$rol][$controller]) ){
+						 if(array_search("*",$ACL[$rol][$controller]) !== FALSE 
+						 		|| array_search($action, $ACL[$rol][$controller] ) !== FALSE){
+						 	self::$_cache[$controller][$action] = TRUE;
+						 }
 					}elseif(array_key_exists("*",$ACL[$rol])){
 						if(array_search("*",$ACL[$rol]["*"]) !== FALSE ||
 						array_search($action,$ACL[$rol]["*"]) !== FALSE)

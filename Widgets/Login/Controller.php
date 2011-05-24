@@ -23,14 +23,20 @@ class Login_Controller extends Wisdom_Controller{
 	
     public function dologin( $user = NULL, $password = NULL){
     	$auth_config  = Wisdom_Config::get("auth");
+    	
         $digest = $auth_config['credentials.digest'];
         $username_field = $auth_config["credentials.user"];
         $password_field = $auth_config["credentials.password"];
+        
+        $select_class = isset($auth_config['select_class']) ? $auth_config['select_class'] : FALSE;
+        
 		$request = $this->getRequest();
 		$usr = $user ? $user : $request->$username_field; 
 		$psw = $digest($password ? $password : $request->$password_field);
-		$select =  $this->_Model->getSelect();
+		
+		$select =  $select_class ? Wisdom_Utils::factory($select_class) : $this->_Model->getSelect();
 		$select->where("{$username_field}= ?",$usr)->where("{$password_field}= ?",$psw);
+	
 		$data = $this->_Model->fetchRow($select, PDO::FETCH_ASSOC);
 	 	if($data === FALSE){
 	 	    $loged = FALSE;

@@ -5,7 +5,7 @@ abstract Class Wisdom_Controller{
 	protected $_Module    = NULL;
 	protected $_Path      = NULL;
 	protected $_request   = NULL;
-	private   $_view_args = array();
+	protected $_view_args = array();
     private   $_Type      = "Module";
     protected $_render    = true;
    
