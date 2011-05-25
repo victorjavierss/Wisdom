@@ -20,7 +20,8 @@ class Services_Email{
 	}
 
 	public function addCC($cc){
-		$this->_cc[] = $cc;
+		if( !isset($this->_cc[$cc]))
+			$this->_cc[$cc] = $cc;
 	}
 
 	public function addBCC($bcc){

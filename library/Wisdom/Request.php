@@ -57,11 +57,11 @@ class Wisdom_Request extends Wisdom_Singleton{
        	
        
        if($items>2 && $items % 2 != 0){
-           throw new Exception("Not enough parameters for parsing the request");
+          // throw new Exception("Not enough parameters for parsing the request");
        }
        
        for($item = 2; $item < $items; $item+=2){
-           $this->_data[$get[$item]]=$get[$item+1];
+           $this->_data[$get[$item]]= isset($get[$item+1])?$get[$item+1]:FALSE;
        }
     }
 

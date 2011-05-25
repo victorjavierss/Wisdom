@@ -1,4 +1,4 @@
 <?php
-class Wisdom_Validate_Interface {
+interface Wisdom_Validate_Interface {
   public function isValid($value, $context);
 }
