@@ -66,9 +66,9 @@ class Wisdom_App {
 
 		$req = Wisdom_Utils::factory('Wisdom_Request');
 		
-		$app->loadController($req->controller, $req->action);
-		 
-		Wisdom_View::render();
+		$raw = $app->loadController($req->controller, $req->action);
+		
+		!$raw && Wisdom_View::render();
 
 		$config = Wisdom_Utils::factory('Wisdom_Config');
 		$_SESSION['config'] = serialize($config);
@@ -108,7 +108,7 @@ class Wisdom_App {
 			$parametros_magic [] = $controller;
 			$mController = Wisdom_Utils::accesor()->get('Wisdom_Magic',$parametros_magic);
 			if(! is_null($mController)){
-				$mController->lala($action, $params);
+				return $mController->lala($action, $params);
 			}
 		}catch (Exception $ex){
 			switch($ex->getCode()){

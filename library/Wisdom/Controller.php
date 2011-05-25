@@ -7,13 +7,19 @@ abstract Class Wisdom_Controller{
 	protected $_request   = NULL;
 	protected $_view_args = array();
     private   $_Type      = "Module";
-    protected $_render    = true;
+    protected $_render    = TRUE;
    
+    protected $_raw_output = FALSE;  
+    
     public function __construct(){
     	$module = get_called_class();
         $module = explode("_",$module);
         $this->_request = Wisdom_Utils::factory()->get('Wisdom_Request');
         $this->_Module = $module[0];
+    }
+    
+    public function isRaw(){
+    	return $this->_raw_output;
     }
     
     protected function getRequest(){
@@ -27,11 +33,12 @@ abstract Class Wisdom_Controller{
    public function dispatch($action,$args){
    	  call_user_func_array(array($this,$action),$args);
    	  if( $this->_render ){
-	   	  $this->_view_args["model"]=$this->getModel();
+	   	 $this->_view_args["model"]=$this->getModel();
 	   	  Wisdom_View::page($this->_view_args,$action);
    	  }else{
    	  	#No rendered view needed
    	  }
+   	  return $this->_raw_output;
    }
    
    protected function setViewVar($var_name, $value){

@@ -3,7 +3,7 @@ class Wisdom_View{
 	
 	private static $_header_css_js = "";
 	private static $_content       = NULL;
-	
+	private static $_raw_output    = FALSE;
 	 
 	private function __construct(){}
  
@@ -17,7 +17,7 @@ class Wisdom_View{
 	public static function render(){
 		$content = ob_get_clean();
 		
-		if(!Wisdom_Request::isAjax()){
+		if(!Wisdom_Request::isAjax() && !self::$_raw_output){
 			/**
 			 *	@depreated
 			 */
@@ -26,7 +26,6 @@ class Wisdom_View{
 			                   Wisdom_Head::js()    . 
 			                   self::$_header_css_js.
 							   Wisdom_Head::renderMessageQueue();
-
 			/*$parse [ 'metas' ]    = Wisdom_Head::metas();
 			$parse ['style']    = Wisdom_Head::css()->render();
 			$parse ['javascript'] = Wisdom_Head::js();
@@ -55,7 +54,8 @@ class Wisdom_View{
 	        $path   = $objeto_anterior->getPath() . '/views';
 	    }
 
-	    $module = $objeto_anterior->getModule(); 
+	    $module = $objeto_anterior->getModule();
+	    
 	    self::header($module);
 	    self::element($view, $path, $vars);
 	}

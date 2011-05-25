@@ -53,7 +53,7 @@ class Wisdom_Magic{
 							$params [] = $params;
 						}
 					}
-					$this->_Controller->dispatch($action,$params);
+					return  $this->_Controller->dispatch($action,$params);
 				} else {
 				//	throw new Exception("Action Denied",2);
 				}

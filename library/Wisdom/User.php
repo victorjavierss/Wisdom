@@ -11,8 +11,6 @@ class Wisdom_User{
 		
 		if( is_object($_SESSION["profile"]) ){
 			$_SESSION["profile"] = Wisdom_Utils::objectToArray($_SESSION["profile"]);
-		}else{
-				
 		}
 		
 		$ret = isset($_SESSION["profile"][$att]) ? $_SESSION["profile"][$att] : null;
