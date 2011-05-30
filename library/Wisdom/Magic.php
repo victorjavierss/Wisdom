@@ -39,7 +39,7 @@ class Wisdom_Magic{
 		if ( ! is_null($this->_Controller) ){
 			$controller_class = get_class($this->_Controller);
 
-			if(! is_null($this->_Controller) && is_callable(array($this->_Controller, $action))){
+			if(! is_null($this->_Controller)){
 				$can_do =  Wisdom_Acl::hasActionPermission($this->_Controller->getModule(),$action);
 				if($can_do){
 					if(is_null($params)){
