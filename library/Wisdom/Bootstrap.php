@@ -6,7 +6,7 @@ $uri= substr($_SERVER["SCRIPT_NAME"],0,strripos($_SERVER["SCRIPT_NAME"],"/"));
 
 date_default_timezone_set('America/Chicago');
  
-define("URL","http://".$_SERVER["SERVER_NAME"].$uri."/");
+define("URL","http://".$_SERVER["HTTP_HOST"].$uri."/");
 
 if (! defined('MODULES_PATH')){
 	//Modules PATH
