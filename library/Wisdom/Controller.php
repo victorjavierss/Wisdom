@@ -32,7 +32,7 @@ abstract Class Wisdom_Controller{
 
 	public function dispatch($action,$args){
 
-		if(is_callable(array($this->_Controller, $action))){
+		if(is_callable(array($this, $action))){
 			call_user_func_array(array($this,$action),$args);
 			if( $this->_render ){
 				$this->_view_args["model"]=$this->getModel();
