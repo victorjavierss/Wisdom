@@ -48,6 +48,7 @@ class Wisdom_Head_Style extends Wisdom_Singleton{
 	}
 
 	public function addWidgetStyle($widget){
+		//FIXME no siempre son widgets =S
 		$path = WISDOM_WIDGETS . "/{$widget}/theme";
 		$this->_other_style    = $this->addStyles($path, "../wisdom/Widgets/{$widget}/theme");
 		$this->_other_ie_style = $this->addIeStyles($path, "../wisdom/Widgets/{$widget}/theme");
@@ -58,14 +59,16 @@ class Wisdom_Head_Style extends Wisdom_Singleton{
 	}
 
 	public function addAppStyle(){
-		$path = APP_HOME.THEME_PATH;
+		
+		$style = Wisdom_Preferences::get('style');
+
+		$path = APP_HOME.THEME_PATH.'/'.$style;
 		
 		$req = Wisdom_Utils::factory("Wisdom_Request");
-		
 		$controller = $req->controller;
 		$action     = $req->action;
 		
-		$prefix = THEME_PATH;
+		$prefix = THEME_PATH.'/'.$style;
 		
 		if( is_dir($path."/{$controller}-{$action}") ){
 			$path = $path . "/{$controller}-{$action}";

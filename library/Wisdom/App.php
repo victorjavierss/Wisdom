@@ -62,7 +62,7 @@ class Wisdom_App {
 	}
 
 	public static function parse(){
-		$app = self::$_self = self::getInstance();
+		$app = self::getInstance();
 
 		$req = Wisdom_Utils::factory('Wisdom_Request');
 		

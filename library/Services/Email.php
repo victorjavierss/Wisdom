@@ -29,7 +29,7 @@ class Services_Email{
 	}
 
 	public function setContet($html){
-		$this->_content = str_replace(array('[br]'),array('<br />'), $html);
+		$this->_content = str_replace(array('[',']'),array('<','>'), $html);
 	}
 
 	public function send(){
@@ -44,15 +44,17 @@ class Services_Email{
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
 
+		
+		
 		// Additional headers
-		$headers .= "From: Support <{$this->_from}>\r\n";
+		$headers .= "From:  {$this->_from}\r\n";
 
 		$cc  && $headers .= "Cc: {$cc}\r\n";
 		$bcc && $headers .= "Bcc: {$bcc}\r\n";
 
 		$success = FALSE;
-
-		$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
+		var_dump($message, $this->_from);
+		//$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
 
 		return $success;
 	}

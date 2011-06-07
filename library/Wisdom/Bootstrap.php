@@ -78,13 +78,7 @@ if ( ! defined('APP_NAME') ){
 }
  
 if (! defined('THEME_PATH')){
-	//CSS PATH
-	$style = isset($config->app['style']) ? $config->app['style'] : NULL;
-	if($style){
-		define('THEME_PATH','/theme/'.$style);
-	}else{
-		define('THEME_PATH','/theme');
-	}
+	define('THEME_PATH','/theme');
 }
 
 if (! defined('CHECKUSER')){
@@ -92,6 +86,9 @@ if (! defined('CHECKUSER')){
 	$checkuser = isset($config->app['checkuser']) ? $config->app['checkuser'] : 1;
 	define('CHECKUSER',0);
 }
+
+$preferences = Wisdom_Utils::factory('Wisdom_Preferences_Adapter');
+Wisdom_Preferences::loadAdapter($preferences);
 
 function __autoload($class_name){
 	$class = str_replace('_',DIRECTORY_SEPARATOR,$class_name);

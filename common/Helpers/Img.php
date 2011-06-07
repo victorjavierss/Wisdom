@@ -1,20 +1,17 @@
 <?php
 class Helpers_Img extends Wisdom_Helper{
     public function img($img, $alt = '', $attribs = array(), $ext = FALSE){
-    	
     	static $cache = array();
-    	
 		$config = $config = Wisdom_Config::get("app");
-		
-		$style = isset($config['style']) ? "{$config['style']}/" : '';
-		
+		$style = Wisdom_Preferences::get('style');
+		$style && $style = "{$style}/";
     	$path = URL . "theme/{$style}images/";
-    	
+    	$theme_dir = APP_HOME.THEME_PATH.DIRECTORY_SEPARATOR.$style;
 		
 		if ( ! isset($cache[$img]) && !$ext ){
 			$test_ext = array('png','gif','jpg','jpeg');
 			foreach($test_ext as $ext_test){
-				is_file(APP_HOME.THEME_PATH.DIRECTORY_SEPARATOR."images/{$img}.{$ext_test}")
+				is_file($theme_dir."images/{$img}.{$ext_test}")
 							&&  $cache[$img] = $ext = $ext_test;
 				
 			}

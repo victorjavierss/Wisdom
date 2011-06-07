@@ -30,11 +30,6 @@ class Wisdom_Db_Row  {
 		$data = Wisdom_Utils::objectToArray($data);
 		$this->setData($data);
 	}
-	
-	
-	//	delete
-	//	update
-	//  save
 
 	public function save(){
 		if( ! $this->_id ){
@@ -79,5 +74,3 @@ class Wisdom_Db_Row  {
 		return isset($this->_data[$var]) ? $this->_data[$var] : FALSE;
 	}
 }
-
-?>
