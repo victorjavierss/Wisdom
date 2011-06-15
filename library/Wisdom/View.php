@@ -13,10 +13,10 @@ class Wisdom_View{
 		  	self::$_header_css_js.=Wisdom_Head::js($module);
 		  }
 	}
-		
+
 	public static function render(){
 		$content = ob_get_clean();
-		
+
 		if(!Wisdom_Request::isAjax() && !self::$_raw_output){
 			/**
 			 *	@depreated

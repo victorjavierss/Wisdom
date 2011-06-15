@@ -5,7 +5,9 @@ var pass_field = '<?=$pass_field;?>';
 </script>
 <div id="logindiv">
 	<fieldset>
-		<?=$helper->img('anonymous','usuario'); ?>
+		<div id="anonymous_image">
+			<?=$helper->img('anonymous','usuario'); ?>
+		</div>
 		<div id="login_response"><!-- spanner --></div>
 		<div id='login_form'>
 			<form action="<?php echo $helper->url('login/dologin')?>" method="post" id="login">

@@ -53,8 +53,8 @@ class Services_Email{
 		$bcc && $headers .= "Bcc: {$bcc}\r\n";
 
 		$success = FALSE;
-		var_dump($message, $this->_from);
-		//$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
+		
+		$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
 
 		return $success;
 	}

@@ -24,5 +24,6 @@
 #entry input { margin: 5px; padding: 0px; float: left; border: 1px solid #cdcdcd; background-color: white; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
 #error_notification { border: 1px #A25965 solid; height: auto; padding: 4px; background: #F8F0F1; text-align: center; -moz-border-radius: 3px; }
 #login_response { overflow: auto; }
-#ajax_loading { display: none; font-size: 12px; font-family: Tahoma; }
+#ajax_loading { display: none; font-size: 12px; font-family: Tahoma; margin: 0 auto; width:64px;}
 #logged_in { border: 1px solid #dddddd; -moz-border-radius: 3px; padding: 5px; width: 500px; }
+#anonymous_image{margin:0 auto 0 auto; width:114px;}
