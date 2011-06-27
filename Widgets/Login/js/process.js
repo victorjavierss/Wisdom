@@ -1,5 +1,5 @@
 window.addEvent("domready",function(){
-$('login').addEvent('submit', function(e) {
+$('form_login').addEvent('submit', function(e) {
 			e.stop();
 			$('ajax_loading').setStyle('display','block');
 			$('login_form').setStyle('display','none');

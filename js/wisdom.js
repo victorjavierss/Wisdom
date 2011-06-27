@@ -17,6 +17,9 @@ var Wisdom = new Class({
     	//TODO mostrar un mensaje FANCY
     	alert(message);
     }
+    ,rpc: function(controller, action, params){
+    	var ajax = new Request();
+    }
 });
 
 var app;

@@ -79,7 +79,7 @@ class Wisdom_Utils{
            $open = opendir($dir);
            while($file = readdir($open)){
               $path=$dir."/".$file;
-              if( is_file($path) ){
+              if( is_file($path) && !self::startsWith($file,'.') ){
               	  if($dirname_as_index){
                  	$files[ dirname($path) ][] = $file;
               	  }else{

@@ -23,10 +23,9 @@ class Menu_Controller extends Wisdom_Controller {
 					$opt->link = str_replace('_BASEURL_',URL,$menu["{$option}.link"]);
 				}elseif(isset($menu["{$option}.module"])){
 					$module = $menu["{$option}.module"];
-					if(count(explode('/',$module))==1){
-						$module .= "/display";
-					}
-					$opt->link = URL.$menu["{$option}.module"];
+					$helper = Wisdom_Utils::factory('Wisdom_Helper');
+					$opt->link = $helper->url($module); 
+					
 				}else{
 					$opt->link = "#";
 				}

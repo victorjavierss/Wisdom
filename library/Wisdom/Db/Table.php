@@ -76,7 +76,7 @@ class Wisdom_Db_Table  {
 		}else{
 			throw new Exception("'{$select}' is not a valid query");
 		}
-		$this->_db->query($sql);
+		return $this->_db->query($sql);
 	}
 
 	public function find($id){

@@ -1,5 +1,4 @@
 <?php
-
 class Wisdom_Db_Row  {
 
 	protected $_id    = NULL;
@@ -26,9 +25,11 @@ class Wisdom_Db_Row  {
 	}
 	
 	public function load($id){
-		$data = $this->_table->find($id);
+		$loaded = (bool) $data = $this->_table->find($id);
 		$data = Wisdom_Utils::objectToArray($data);
 		$this->setData($data);
+		$this->_id = $id;
+		return $loaded;
 	}
 
 	public function save(){
@@ -37,7 +38,7 @@ class Wisdom_Db_Row  {
 			$this->_data[$this->_table->getPrimary()] = $this->_id = $this->_table->lastId();
 		}else{
 			$primary = $this->_table->getPrimary();
-			$this->update($this->_data, "WHERE {$primary} ='{$this->_id}'");
+			$result = $this->update($this->_data, "WHERE {$primary} ='{$this->_id}'");
 		}
 		return $result;
 	}	
@@ -50,16 +51,18 @@ class Wisdom_Db_Row  {
 	 * @param unknown_type $condition The condition for performs the updating, if none especified all records are updated
 	 * @return unknown_type
 	 */
-	public function update(array $data, $condition=""){
+	protected function update(array $data, $condition=""){
 		$update = array();
 		foreach($data as $campo=>$valor){
-			$update[] = "{$campo}='".htmlentities($valor)."',";
+			$update[] = "{$campo}='".htmlentities($valor)."'";
 		}
 		$update = implode(',',$update);
-		if($condition != ""){
-			$condition="WHERE ".$condition;
-		}
-		$this->query("UPDATE {$table} SET {$update} {$condition}" );
+
+		$table = (string) $this->_table;
+
+		$sql = "UPDATE {$table} SET {$update} {$condition}";
+		
+		return $this->_table->query( $sql );
 	}
 
 	public function toArray(){
@@ -72,5 +75,8 @@ class Wisdom_Db_Row  {
 
 	public function __get($var){
 		return isset($this->_data[$var]) ? $this->_data[$var] : FALSE;
+	}
+	public function __set($var, $value){
+		$this->_data[$var]  = $value;
 	}
 }
