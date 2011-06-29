@@ -74,9 +74,20 @@ class Wisdom_Db_Row  {
 	}
 
 	public function __get($var){
-		return isset($this->_data[$var]) ? $this->_data[$var] : FALSE;
+		$value = isset($this->_data[$var]) ? $this->_data[$var] : FALSE;
+		if($value){
+			if ( @iconv( 'UTF-8', "UTF-8//TRANSLIT", $value) == $value ){
+				
+			}else{
+				$value = utf8_encode ($value);
+			}
+		}
+		return 
 	}
 	public function __set($var, $value){
+		
+		
+		
 		$this->_data[$var]  = $value;
 	}
 }

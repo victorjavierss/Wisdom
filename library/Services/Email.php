@@ -28,8 +28,16 @@ class Services_Email{
 		$this->_bcc [] = $bcc;
 	}
 
-	public function setContet($html){
+	public function setContent($html){
 		$this->_content = str_replace(array('[',']'),array('<','>'), $html);
+	}
+
+	/**
+	 * This is an alias
+	 * @param unknown_type $html
+	 */
+	public function setContet($html){
+		$this->setContent($html);
 	}
 
 	public function send(){

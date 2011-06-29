@@ -18,7 +18,7 @@ class Wisdom_Request extends Wisdom_Singleton{
     }
     
     protected function _get($element){
-    	return isset($this->_data[$element]) ? $this->_data[$element] : FALSE;
+    	return isset($this->_data[$element]) ? utf8_decode(rawurldecode($this->_data[$element])) : FALSE;
     }
     
     /**
