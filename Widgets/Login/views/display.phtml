@@ -14,17 +14,18 @@ var pass_field = '<?=$pass_field;?>';
 			<form action="<?php echo $helper->url('login/dologin')?>" method="post" id="form_login">
           		<table cellspacing='0'>
           			<thead>
+          				<tr><th>&nbsp;</th></tr>
           			</thead>
           			<tfoot>
           				<tr><td colspan="2"><input type="submit" value="Ingresar" name="submit" id="submit" class='button' /></td></tr>
           			</tfoot>
           			<tbody>
           				<tr>
-          					<td><label for="login">Nombre de Usuario</label></td>
+          					<td><label for="<?php echo $user_field?>">Nombre de Usuario</label></td>
           					<td><input type="text" name="<?php echo $user_field?>" id="<?php echo $user_field?>" /></td>
           				</tr>
           				<tr>
-          					<td><label for="psw">Contrase&ntilde;a</label></td>
+          					<td><label for="<?php echo $pass_field?>">Contrase&ntilde;a</label></td>
           					<td><input type="password" name="<?php echo $pass_field?>" id="<?php echo $pass_field?>" /></td>
           				</tr>
           			</tbody>
