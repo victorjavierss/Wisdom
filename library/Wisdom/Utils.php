@@ -170,6 +170,14 @@ public static function jsCompress($files){
 			return $d;
 		}
 	}
+	public static function utf8encode($value){
+		if ( @iconv( 'UTF-8', "UTF-8//TRANSLIT", $value) == $value ){
+		
+		}else{
+			$value = utf8_encode ($value);
+		}
+		return $value;
+	} 
 }
 
 
