@@ -21,7 +21,11 @@ abstract Class Wisdom_Controller{
 	public function isRaw(){
 		return $this->_raw_output;
 	}
-
+/**
+ * 
+ * Enter description here ...
+ * @return Wisdom_Request
+ */
 	protected function getRequest(){
 		return $this->_request;
 	}

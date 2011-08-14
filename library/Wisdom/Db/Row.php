@@ -71,6 +71,8 @@ class Wisdom_Db_Row  {
 
 	public function setData($data){
 		$this->_data = $data;
+		$primary = $this->_table->getPrimary();
+		$this->_id   = $data[$primary];
 	}
 
 	public function __get($var){
@@ -82,12 +84,10 @@ class Wisdom_Db_Row  {
 				$value = utf8_encode ($value);
 			}
 		}
-		return 
+		return $value;
 	}
+	
 	public function __set($var, $value){
-		
-		
-		
 		$this->_data[$var]  = $value;
 	}
 }
