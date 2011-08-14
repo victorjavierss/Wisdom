@@ -15,10 +15,10 @@ $('form_login').addEvent('submit', function(e) {
 		                        }else{ 
 			                         var myShake=new Shake('logindiv',{distance:15,duration:80});
                                      $('login_response').set('html', response);			  
-                                     $('submit').setStyle('display','block');
+                                     $('submit').setStyle('display','inherit');
                                      $(pass_field).value="";
                                      myShake.shake();
-                                     $('login_form').setStyle('display','block');
+                                     $('login_form').setStyle('display','inherit');
 		                      }
 		                    }
 				,onError: function(response){

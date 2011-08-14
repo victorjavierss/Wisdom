@@ -13,7 +13,6 @@ class Helpers_Img extends Wisdom_Helper{
 			foreach($test_ext as $ext_test){
 				is_file($theme_dir."images/{$img}.{$ext_test}")
 							&&  $cache[$img] = $ext = $ext_test;
-				
 			}
 		}else{
 			$ext = $cache[$img];
@@ -24,8 +23,11 @@ class Helpers_Img extends Wisdom_Helper{
 		
 		foreach($attribs as $attrib => $value){
 			$attrib!='alt' &&
-						$attribs_parse .= "{$attrib}='$value'";
+			$attribs_parse .= "{$attrib}='$value'";
 		}
-        return "<img src='{$path}{$img}.{$ext}' alt='{$alt}' title='{$alt}'  {$attribs_parse} />";
+
+		$img = $ext ? "<img src='{$path}{$img}.{$ext}' alt='{$alt}' title='{$alt}'  {$attribs_parse} />" : FALSE;
+
+        return $img;
     }
 }

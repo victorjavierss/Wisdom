@@ -35,15 +35,14 @@ class Wisdom_Db_Row  {
 	public function save(){
 		if( ! $this->_id ){
 			$result = $this->_table->insert($this->_data);
-			$this->_data[$this->_table->getPrimary()] = $this->_id = $this->_table->lastId();
+			$this->_data[ $this->_table->getPrimary() ] = $this->_id = $this->_table->lastId();
 		}else{
 			$primary = $this->_table->getPrimary();
 			$result = $this->update($this->_data, "WHERE {$primary} ='{$this->_id}'");
 		}
 		return $result;
 	}	
-	
-	 
+
 	/**
 	 * Updates a record from a table
 	 * @param unknown_type $table The table you want to update

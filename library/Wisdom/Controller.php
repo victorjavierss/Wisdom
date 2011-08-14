@@ -35,7 +35,6 @@ abstract Class Wisdom_Controller{
 	}
 
 	public function dispatch($action,$args){
-
 		if(is_callable(array($this, $action))){
 			call_user_func_array(array($this,$action),$args);
 			if( $this->_render ){
@@ -46,6 +45,7 @@ abstract Class Wisdom_Controller{
 			}
 			return $this->_raw_output;
 		}else{
+			$controller_class = get_called_class();
 			throw new Exception("Action {$action} is not callable for controller {$controller_class}",1);
 		}
 	}
