@@ -8,7 +8,7 @@ class Wisdom_Db_Row  {
 	
 	public function __construct($table, $data = array()){
 		if( is_string($table) ){
-			$table = Utils::factory($table);
+			$table = Wisdom_Utils::factory($table);
 		}
 		
 		if ($table instanceof Wisdom_Db_Table){

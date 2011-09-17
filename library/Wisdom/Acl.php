@@ -11,11 +11,8 @@ class Wisdom_Acl{
 		}else{
 
 		}
-
 		$guest_default_rules = array("login"=>array("display","dologin"));
-		
 		$default_rules = array('error'=>array('*'));
-
 		if( isset($ACL['guest']) ){
 			$ACL['guest'] = $ACL['guest']+$guest_default_rules;
 		}else{
@@ -25,9 +22,7 @@ class Wisdom_Acl{
 		foreach($ACL as &$perfil ){
 			$perfil += $default_rules;
 		}
-		
 		unset($perfil);
-
 		return $ACL;
 	}
 
@@ -60,6 +55,7 @@ class Wisdom_Acl{
 				self::$_cache[$controller][$action] = TRUE;
 			}
 		}
+
 		return self::$_cache[$controller][$action];
 	}
 
@@ -72,10 +68,8 @@ class Wisdom_Acl{
 			if( isset($ACL) ){
 				$usr = Wisdom_Utils::accesor()->get('Wisdom_User');
 				$rol = $usr->role;
-				
 				if(isset($ACL[$rol])){
 					self::$_cache_controlador[$controller] = FALSE;
-						
 					if ( array_key_exists("*",$ACL[$rol]) || array_key_exists($controller,$ACL[$rol]) ){
 						self::$_cache_controlador[$controller] = TRUE;
 					}
@@ -87,8 +81,6 @@ class Wisdom_Acl{
 			}
 			self::$_cache_controlador[$controller] = CHECKUSER ? self::$_cache_controlador[$controller] : TRUE;
 		}
-
 		return  self::$_cache_controlador[$controller];
 	}
 }
-?>
