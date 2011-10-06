@@ -84,7 +84,7 @@ if (! defined('THEME_PATH')){
 if (! defined('CHECKUSER')){
 	//Checks wheter a user is loged in (1=yes,0=no)
 	$checkuser = isset($config->app['checkuser']) ? $config->app['checkuser'] : 1;
-	define('CHECKUSER',0);
+	define('CHECKUSER', $checkuser);
 }
 
 $preferences = Wisdom_Utils::factory('Wisdom_Preferences_Adapter');

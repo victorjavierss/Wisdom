@@ -1,10 +1,7 @@
 <?php
-
 //Definir la ubicación de la libreria de WISDOM
 define('WISDOM_LIB', WISDOM_HOME . DIRECTORY_SEPARATOR . 'library'. DIRECTORY_SEPARATOR  );
-
 include(WISDOM_LIB . 'Wisdom' . DIRECTORY_SEPARATOR . 'Bootstrap.php');
- 
 class Wisdom_App {
 
 	static $_self;
@@ -18,7 +15,7 @@ class Wisdom_App {
 			//Verifies that all directories needed exists
 			$this->_checkDirectory();
 		}catch(Exception $ex){
-			//			self::widget("error","exception",$ex);
+			//self::widget("error","exception",$ex);
 			echo "<pre><strong>" . $ex->getMessage() . "</strong><br/>".
 			$ex->getTraceAsString().
                  "</pre>";
@@ -46,7 +43,6 @@ class Wisdom_App {
 			throw new Exception("Modules path is misconfigured");
 		}
 
-		
 		if(!is_dir(APP_HOME.THEME_PATH)){
 			throw new Exception("The Theme path (" . APP_HOME.THEME_PATH .") is misconfigured");
 		}
@@ -63,17 +59,13 @@ class Wisdom_App {
 
 	public static function parse(){
 		$app = self::getInstance(); 
-
 		$req = Wisdom_Utils::factory('Wisdom_Request');
-		
 		$raw = $app->loadController($req->controller, $req->action);
-		
 		!$raw && Wisdom_View::render();
-
 		$config = Wisdom_Utils::factory('Wisdom_Config');
 		$_SESSION['config'] = serialize($config);
 	}
-	 
+
 	public static function widget($widget,$action="display",$params=array()){
 		$user = Wisdom_Utils::accesor()->get('Wisdom_User');
 		$load = CHECKUSER ? $user->auth  : true;
@@ -84,20 +76,18 @@ class Wisdom_App {
 		}
 	}
 
-	
 	public static function getInstance(){
 		if( ! isset(self::$_self)){
 			self::$_self = new Wisdom_App();
 		}
 		return self::$_self;
 	}
-	
 
 	public static function load($item){
 		$user = new Wisdom_User();
 		$load = CHECKUSER ? $user->auth : true;
 		if($load){
-			View::element($item,APP_HOME."/common");
+			Wisdom_View::element($item,APP_HOME."/common");
 		}else{
 			//Not load the item
 		}

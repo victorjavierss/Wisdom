@@ -4,11 +4,12 @@ class Wisdom_Db_Row  {
 	protected $_id    = NULL;
 	protected $_table = NULL;
 	protected $_data  = NULL;
+	protected $_updated = NULL;
 
 	
 	public function __construct($table, $data = array()){
 		if( is_string($table) ){
-			$table = Utils::factory($table);
+			$table = Wisdom_Utils::factory($table);
 		}
 		
 		if ($table instanceof Wisdom_Db_Table){
@@ -18,9 +19,9 @@ class Wisdom_Db_Row  {
 		}
 
 		if( is_array($data) ){
-			$this->_data = $data;
+			$this->setData($data);
 		}else{
-			
+
 		}
 	}
 	
@@ -39,7 +40,7 @@ class Wisdom_Db_Row  {
 			$this->_data[ $this->_table->getPrimary() ] = $this->_id = $this->_table->lastId();
 		}else{
 			$primary = $this->_table->getPrimary();
-			$result = $this->update($this->_data, "WHERE {$primary} ='{$this->_id}'");
+			$result = $this->update($this->_updated, "WHERE {$primary} ='{$this->_id}'");
 		}
 		return $result;
 	}	
@@ -92,6 +93,6 @@ class Wisdom_Db_Row  {
 	}
 	
 	public function __set($var, $value){
-		$this->_data[$var]  = $value;
+		$this->_data[$var] = $this->_updated[$var] = $value;
 	}
 }

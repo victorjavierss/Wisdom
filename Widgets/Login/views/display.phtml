@@ -17,6 +17,9 @@ var pass_field = '<?=$pass_field;?>';
           				<tr>
           					<td colspan="2">
           						<input type="submit" value="Ingresar" name="submit" id="submit" class='button' />
+          						<?php if($recover){ ?>
+          						<input type="button" value="Recuperar Contraseña" name="recovery" id="recovery" class='button' onclick="window.location.href='<?php echo $helper->url($recover)?>'" />
+          						<?php } ?>
           					</td>
           				</tr>
           			</tfoot>

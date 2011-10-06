@@ -61,7 +61,7 @@ class Wisdom_Request extends Wisdom_Singleton{
        }
        
        for($item = 2; $item < $items; $item+=2){
-           $this->_data[$get[$item]]= isset($get[$item+1])?$get[$item+1]:FALSE;
+           $this->_data[$get[$item]]= isset($get[$item+1])?$get[$item+1]:TRUE;
        }
     }
 
