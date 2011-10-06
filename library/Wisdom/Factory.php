@@ -16,7 +16,7 @@ class Wisdom_Factory{
 			}else{
 				#Ya es un arreglo
 			}
-			
+
 			if (class_exists($classname) ){
 				if( count($params)>0 ){
 					$reflection_class = new ReflectionClass($classname);
@@ -36,20 +36,15 @@ class Wisdom_Factory{
 	}
 
 	private function findClassFile($classname){
-		
 		$loaded_files = get_included_files();
-		
 		static $cache = array();
-		
 		if( array_key_exists($classname,$cache) ){
 			$return = $cache[$classname];
 		}else{
 			$classname = str_replace('_', '\\'.DIRECTORY_SEPARATOR,$classname);
 			$classname .= '.php';
 			$return    = FALSE;
-			
 			$result = preg_grep("/.($classname)/i",$loaded_files);
-			
 			$return =  $cache[$classname] = current($result);
 		}
 		return $return;

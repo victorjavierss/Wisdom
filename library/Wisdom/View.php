@@ -31,11 +31,10 @@ class Wisdom_View{
 			$parse ['javascript'] = Wisdom_Head::js();
 	*/
 			$parse['content'] = $content;
-
 			$common_path = APP_HOME."/common/views";
-			
-			$template = Wisdom_Mobile::is() && is_file($common_path."/mobile.phtml") ? "mobile" : "template";
-			
+			$layout = Wisdom_Utils::factory()->get("Wisdom_Request")->layout;			
+			!$layout && $layout="template";
+			$template = Wisdom_Mobile::is() && is_file($common_path."/mobile.phtml") ? "mobile" : $layout;
 			Wisdom_View::element($template, $common_path, $parse);
 		}else{
 			#Solo se muestra el contenido

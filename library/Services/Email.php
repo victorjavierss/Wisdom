@@ -62,7 +62,7 @@ class Services_Email{
 
 		$success = FALSE;
 		
-		$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
+		//$to && $subject && $message && $success = mail($to, $subject, $message, $headers);
 
 		return $success;
 	}

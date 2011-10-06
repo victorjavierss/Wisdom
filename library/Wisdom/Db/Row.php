@@ -35,6 +35,7 @@ class Wisdom_Db_Row  {
 	public function save(){
 		if( ! $this->_id ){
 			$result = $this->_table->insert($this->_data);
+			
 			$this->_data[ $this->_table->getPrimary() ] = $this->_id = $this->_table->lastId();
 		}else{
 			$primary = $this->_table->getPrimary();
@@ -53,14 +54,18 @@ class Wisdom_Db_Row  {
 	protected function update(array $data, $condition=""){
 		$update = array();
 		foreach($data as $campo=>$valor){
-			$update[] = "{$campo}='".htmlentities($valor)."'";
+			if($valor instanceof Wisdom_Db_Expression ){
+				$valor = $valor;
+			}else{
+				$valor = "'".$valor."'";
+			}
+			$update[] = "{$campo}={$valor}";
 		}
 		$update = implode(',',$update);
 
 		$table = (string) $this->_table;
 
 		$sql = "UPDATE {$table} SET {$update} {$condition}";
-		
 		return $this->_table->query( $sql );
 	}
 
@@ -71,7 +76,7 @@ class Wisdom_Db_Row  {
 	public function setData($data){
 		$this->_data = $data;
 		$primary = $this->_table->getPrimary();
-		$this->_id   = $data[$primary];
+		$this->_id   = isset($data[$primary]) ? $data[$primary] : FALSE;
 	}
 
 	public function __get($var){

@@ -15,7 +15,7 @@ class Helpers_Img extends Wisdom_Helper{
 							&&  $cache[$img] = $ext = $ext_test;
 			}
 		}else{
-			$ext = $cache[$img];
+			$ext = $ext ? $ext : $cache[$img];
 		}
 		
 		
