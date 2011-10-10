@@ -63,23 +63,19 @@ class Wisdom_Head{
         		$js_widget = Wisdom_Utils::jsCompress($js_widget);
         	}else {
         		#No se requiere compresión
-        	}        	
-        	
+        	}
             foreach($js_widget as $js){
                $js_link.="<script type='text/javascript' src='".URL."../wisdom/Widgets/{$widget}/js/{$js}'> </script>\n";
             }
-            
         }else{
         	#Loads Wisdom Javascript
 			  $js_wisdom = Wisdom_Utils::getFilesFromDir(WISDOM_HOME."/js",JS_COMPRESS ? TRUE : FALSE );
-
 			  if(JS_COMPRESS){
 			  	$js_wisdom = Wisdom_Utils::jsCompress($js_wisdom);
 			  }
 	          foreach($js_wisdom as $js){
 	             $js_link.="<script type='text/javascript' src='".URL."../wisdom/js/{$js}'> </script>\n";
 	          }
-
 	          $js_app = Wisdom_Utils::getFilesFromDir(APP_HOME."/js",JS_COMPRESS ? TRUE : FALSE);
         	  if(JS_COMPRESS){
 			  	$js_app = Wisdom_Utils::jsCompress($js_app);
@@ -87,8 +83,6 @@ class Wisdom_Head{
 			foreach($js_app as $js){  
 	          $js_link.="<script type='text/javascript' src='".URL.JAVASCRIPT_PATH."/{$js}'> </script>\n";
 	        }
-			
-        	
         }
         return $js_link;
     }    

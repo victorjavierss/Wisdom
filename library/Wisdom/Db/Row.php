@@ -1,4 +1,4 @@
-<?php
+	<?php
 class Wisdom_Db_Row  {
 
 	protected $_id    = NULL;

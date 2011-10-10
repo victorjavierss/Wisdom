@@ -11,7 +11,7 @@ class Login_Controller extends Wisdom_Controller{
 		$this->_hidden_fields = array_keys($fields);
 		
 		$username_field = $auth_config["credentials.user"];
-		$recover        = $auth_config['recover'];
+		$recover        = isset($auth_config['recover'])?$auth_config['recover']:FALSE;
 		
 		$this->setViewVar('pass_field', $password_field);
 		$this->setViewVar('user_field', $username_field);

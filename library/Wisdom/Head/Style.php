@@ -7,7 +7,6 @@ class Wisdom_Head_Style extends Wisdom_Singleton{
 	protected $_app_ie_style = array();
 	protected $_other_ie_style = array();
 	protected $_embbebed_style = array();
-	
 
 	protected function addIeStyles($path, $prefix){
 		$ie_dirs = Wisdom_Utils::getDirs($path, array('images'));
