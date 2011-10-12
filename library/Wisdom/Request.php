@@ -35,45 +35,42 @@ class Wisdom_Request extends Wisdom_Singleton{
        	$get                       = isset($_GET["q"]) ? $_GET["q"] : DEFAULT_MODULE; 
        	$get                       = explode("/",$get);
        	
+        unset( $_GET['q'] );
+        
+        $this->_data = array_merge($this->_data, $_GET);
+       
        	if( Wisdom_Acl::hasControllerPermission($get[0])){
        		$this->_data["controller"] = $get[0]; 
        	} else {
        		$this->_data["controller"] = 'login';
        	}
-
-		$this->_data["action"]     = (isset($get[1]) && $get[1] )? $get[1] : "display";
-		
-		if( ! Wisdom_Acl::hasActionPermission($this->_data["controller"],$this->_data["action"]) ){
-			$this->_data["controller"] = 'login';
-			$this->_data["action"] 	   = 'display'; 
+	$this->_data["action"]     = (isset($get[1]) && $get[1] )? $get[1] : "display";	
+	if( ! Wisdom_Acl::hasActionPermission($this->_data["controller"],$this->_data["action"]) ){
+		$this->_data["controller"] = 'login';
+		$this->_data["action"] 	   = 'display'; 
        	}
-       	
        	$items = count($get);
-       
        	if( ! isset($this->_data['lang']) ){
        		$config = Wisdom_Config::get('app');
 			$this->_data['lang'] = isset($config['lang']) ? $config['lang'] : 'en';
        	}
-       	
-       
        if($items>2 && $items % 2 != 0){
           // throw new Exception("Not enough parameters for parsing the request");
        }
-       
        for($item = 2; $item < $items; $item+=2){
            $this->_data[$get[$item]]= isset($get[$item+1])?$get[$item+1]:TRUE;
        }
     }
 
-	public function isPost(){
-		return $this->_is_post;
-	}
+    public function isPost(){
+        return $this->_is_post;
+    }
 
     public static function isAjax(){
-	   return (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')?true:false;
-	}
+        return (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')?true:false;
+    }
 
-	public function getParams(){
-		return $this->_data;	
-	}
+    public function getParams(){
+        return $this->_data;	
+    }
 }
