@@ -25,41 +25,48 @@ class Wisdom_Request extends Wisdom_Singleton{
      * Handles the data from POST and GET for an easy access
      */
     public function init(){
+	$requestUri = $_SERVER['REQUEST_URI'];
+	$requestScript = str_replace('index.php',NULL,$_SERVER['SCRIPT_NAME']);
     	if(isset($_POST) && ! empty($_POST)){
           $this->_data = $this->_data + $_POST;
 		  $this->_is_post = TRUE;
 		}
-
-		$user 		   =  Wisdom_Utils::accesor()->get('Wisdom_User');
+	$user 		   =  Wisdom_Utils::accesor()->get('Wisdom_User');
           
-       	$get                       = isset($_GET["q"]) ? $_GET["q"] : DEFAULT_MODULE; 
-       	$get                       = explode("/",$get);
-       	
-        unset( $_GET['q'] );
+	$get = str_replace($requestScript, NULL, $requestUri);
+
+	$get = explode('?',$get);
+	$get = $get[0];
+       	$get = explode("/",$get);
+
+	$config = Wisdom_Config::get('app');
         
-        $this->_data = array_merge($this->_data, $_GET);
-       
-       	if( Wisdom_Acl::hasControllerPermission($get[0])){
-       		$this->_data["controller"] = $get[0]; 
-       	} else {
+    $this->_data = array_merge($this->_data, $_GET);
+
+	$controller = $get[0] ? $get[0] : strtolower($config['home_controller']);
+	
+    if( Wisdom_Acl::hasControllerPermission($controller)){
+       		$this->_data["controller"] = $controller; 
+    } else {
        		$this->_data["controller"] = 'login';
-       	}
+    }
 	$this->_data["action"]     = (isset($get[1]) && $get[1] )? $get[1] : "display";	
+	
 	if( ! Wisdom_Acl::hasActionPermission($this->_data["controller"],$this->_data["action"]) ){
 		$this->_data["controller"] = 'login';
 		$this->_data["action"] 	   = 'display'; 
        	}
        	$items = count($get);
        	if( ! isset($this->_data['lang']) ){
-       		$config = Wisdom_Config::get('app');
 			$this->_data['lang'] = isset($config['lang']) ? $config['lang'] : 'en';
        	}
-       if($items>2 && $items % 2 != 0){
-          // throw new Exception("Not enough parameters for parsing the request");
-       }
+
        for($item = 2; $item < $items; $item+=2){
-           $this->_data[$get[$item]]= isset($get[$item+1])?$get[$item+1]:TRUE;
-       }
+		  if($get[$item]){
+			   $this->_data[ $get[$item] ]= isset($get[$item+1])?$get[$item+1]:TRUE;
+		 }
+      }
+
     }
 
     public function isPost(){
