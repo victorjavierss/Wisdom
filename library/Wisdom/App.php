@@ -122,6 +122,10 @@ class Wisdom_App {
 	public static function redirect($location, $baseURL=URL){
 		$helper_handler = Wisdom_Utils::factory()->get('Wisdom_Helper');
 		$location = $helper_handler->url($location);
+		self::_redirect($location);
+	}
+	
+	public static function _redirect($location){
 		header("Location: {$location}");
 	}
 }

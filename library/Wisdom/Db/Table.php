@@ -7,6 +7,7 @@ class Wisdom_Db_Table  {
 	protected $_schema  = NULL;
 
 	protected  $_describe = NULL;
+	/** @var $this->_db Wisdom_DB  */
 	protected  $_db;
 
 	protected $_data_type_validations = array(
@@ -26,6 +27,22 @@ class Wisdom_Db_Table  {
 		$this->_name = $name;
 	}
 
+	public function update($values = array(), $condition = NULL){
+		
+		$updateQuery = "UPDATE {$this->_name} SET ";
+		foreach($values as $fields => $value){
+			$updateQuery .= "{$fields}=" .  $this->_db->quote($value) . ",";
+		}
+		
+		$updateQuery = substr($updateQuery, 0, -1);
+		
+		$condition && $updateQuery.= " WHERE {$condition}";
+		
+//	ECHO 	$updateQuery;DIE;
+		
+		return $this->_db->query($updateQuery, FALSE);
+	}
+	
 	public function getName(){
 		return $this->_name;
 	}
